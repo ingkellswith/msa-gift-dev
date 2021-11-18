@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  gift-db:
+    image: mysql:8.0
+    ports:
+      - "13307:13307"
+    environment:
+      - MYSQL_DATABASE=gift
+      - MYSQL_ROOT_PASSWORD=root-pass
+      - MYSQL_USER=gift-svc
+      - MYSQL_PASSWORD=gift-pass
+      - MYSQL_TCP_PORT=13307
+      - TZ=UTC
+    command: # 명령어 실행
+      - --lower_case_table_names=1
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./mysql:/var/lib/mysql
