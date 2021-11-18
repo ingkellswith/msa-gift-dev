@@ -16,12 +16,14 @@ public class GiftApiController {
     private final GiftFacade giftFacade;
     private final GiftDtoMapper giftDtoMapper;
 
+    // 선물하기 서비스 내부 동작
     @GetMapping("/{giftToken}")
     public CommonResponse retrieveOrder(@PathVariable String giftToken) {
         var giftInfo = giftFacade.getOrder(giftToken);
         return CommonResponse.success(giftInfo);
     }
 
+    // 주문하기 서비스 직접 호출, retrofit 사용
     @PostMapping
     public CommonResponse registerOrder(@RequestBody @Valid GiftDto.RegisterReq request) {
         var command = giftDtoMapper.of(request);
@@ -29,12 +31,14 @@ public class GiftApiController {
         return CommonResponse.success(new GiftDto.RegisterRes(giftInfo));
     }
 
+    // 선물하기 서비스 내부 동작
     @PostMapping("/{giftToken}/payment-processing")
     public CommonResponse requestPaymentProcessing(@PathVariable String giftToken) {
         giftFacade.requestPaymentProcessing(giftToken);
         return CommonResponse.success("OK");
     }
 
+    // 주문하기 서비스 직접 호출, retrofit 사용
     @PostMapping("/{giftToken}/accept-gift")
     public CommonResponse acceptGift(
             @PathVariable String giftToken,
