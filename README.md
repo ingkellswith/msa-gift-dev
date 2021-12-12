@@ -46,7 +46,7 @@ msa-gift-dev에서는 [msa-order-dev](https://github.com/ingkellswith/msa-order-
 
 ![msa-gift-deny](https://user-images.githubusercontent.com/55550753/136478912-9638ca3b-e51b-499c-ab79-45d55b09e8ad.PNG)  
 
-# kafka
+# 참고 : kafka(이 프로젝트에서 사용하지 않음)
 #### kafka 의 multi consumer 구조를 활용한다면, 주문 서비스를 활용하는 클라이언트가 지속적으로 추가되어도 모든 클라이언트가 결제 성공 메시지를 전달 받을 수 있다  
 ![kafkabasic](https://user-images.githubusercontent.com/55550753/136479313-dc930dc2-47ac-4f06-8c4b-0d6387e722c9.PNG)
 
